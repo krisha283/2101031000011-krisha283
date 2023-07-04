@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Div</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+             position: relative;
+             animation-name: Demo;
+             animation-duration: 10s;
+             animation-iteration-count: infinite;
+        }
+        @keyframes Demo{
+            0%{background-color: blanchedalmond;left: 0px; top: 0px; transform: rotate(0deg);}
+            25%{background-color:blue ;left: 200px; top: 0px; transform: rotate(90deg);}
+            50%{background-color: rgb(77, 197, 29);left: 200px; top: 0px; transform: rotate(180deg);}
+            75%{background-color: blanchedalmond;left: 0px; top: 0px; transform: rotate(0deg);}
+            
+            100%{background-color: rgb(175, 23, 36);left: 0px; top: 0px; transform: rotate(360deg);}
+            }
+        
+
+    </style>
+
+</head>
+<body>
+    <div></div>
+    
+</body>
+</html>
