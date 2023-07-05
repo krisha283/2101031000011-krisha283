@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <center>
+        <table border="1" cellpadding="10" width="40%">
+            <tr>
+                <td align="center">Array:</td>
+                <td align="center"><input type="text" id="array_content" size="50"></td>
+            </tr>
+            <tr>
+                <td align="center">Push:</td>
+                <td align="center"><input type="text" placeholder="Enter text to push" id="push_item"><input type="button" value="Push" id="btn_push"><br><br>new element will be add at last</td>
+            </tr>
+            <tr>
+                <td align="center">Pop:</td>
+                <td align="center"><input type="text" placeholder="Enter text to Pop" id="pop_item"><input type="button" value="Pop" id="btn_pop"><br><br>Last element of the array will be remove</td>
+            </tr>
+            <tr>
+                <td align="center">Unshift:</td>
+                <td align="center"><input type="text" placeholder="Enter text to Unshift" id="unshift_item"><input type="button" value="Unshift" id="btn_unshift"><br><br>New element will be add at First</td>
+            </tr>
+            <tr>
+                <td align="center">Shift:</td>
+                <td align="center"><input type="button" value="click to Shift" id="btn_shift"><br><br>First element of the array will be remove</td>
+            </tr>
+            <tr>
+                <td align="center">Sort:</td>
+                <td align="center"><input type="button" value="Sort Array" id="btn_sort"></td>
+            </tr>
+            <tr>
+                <td align="center">Reverse:</td>
+                <td align="center"><input type="button" value="Reverse" id="btn_reverse"></td>
+            </tr>
+            <tr>
+                <td align="center">Concat:</td>
+                <td align="center"><input type="text" id="array_concat"><input type="button" value="Merge Array" id="btn_concat"><br><br><input type="text" size="50" id="array_merge"></td>
+            </tr>
+        </table>
+    </center>
+</body>
+
+<script>
+    var array_content=document.getElementById("array_content");
+    var push_item=document.getElementById("push_item");
+    var array=["Krisha","Baldha",19,"female","Ahmedabad"];
+    var btn_push=document.getElementById("btn_push");
+    var pop_item=document.getElementById("pop_item");
+    var btn_pop=document.getElementById("btn_pop");
+    var unshift_item=document.getElementById("unshift_item");
+    var btn_unshift=document.getElementById("btn_unshift");
+    var btn_shift=document.getElementById("btn_shift");
+    var btn_sort=document.getElementById("btn_sort");
+    var btn_reverse=document.getElementById("btn_reverse");
+    var array_concat=document.getElementById("array_concat");
+    var btn_concat=document.getElementById("btn_concat");
+    var array_merge=document.getElementById("array_merge");
+
+    array_content.value=array;
+    btn_push.addEventListener("click",()=>{
+        array.push(push_item.value);
+        array_content.value=array;
+    });
+    btn_pop.addEventListener("click",()=>{
+        array.pop();
+        array_content.value=array;
+    });
+    btn_unshift.addEventListener("click",()=>{
+        array.unshift(unshift_item.value);
+        array_content.value=array;
+    });
+    btn_shift.addEventListener("click",()=>{
+        array.shift();
+        array_content.value=array;
+    });
+    btn_sort.addEventListener("click",()=>{
+        array.sort();
+        array_content.value=array;
+    });
+    btn_reverse.addEventListener("click",()=>{
+        array.reverse();
+        array_content.value=array;
+    });
+    var data=["Aryan","Baldhaa",16,"male"];
+    array_concat.value=data;
+    btn_concat.addEventListener("click",()=>{
+        var merge_data = array.concat(data);
+        array_merge.value=merge_data;
+    });
+</script>
+</html>
