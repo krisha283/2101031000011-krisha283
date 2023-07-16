@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+
+    <script>
+        var $FullNameRegEx = /^([a-zA-Z ]{3,40})$/;
+        var $EmailIdRegEx = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b$/i;
+
+        $(document).ready(function () {
+
+            $("#TxtName").blur(function () {
+                $("#TxtNameValidation").empty();
+                if ($(this).val() == "" || $(this).val() == null) {
+                    $("#TxtNameValidation").html("(*) Name Required...");
+                }
+                else {
+                    if (!$(this).val().match($FullNameRegEx)) {
+                        $("#TxtNameValidation").html("(*) Invalid Name...");
+                    }
+                }
+            });
+
+            $("#TxtName").keypress(function (e) {
+                $("#TxtNameValidation").empty();
+                var Flag = ((e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 121) || (e.which === 32));
+                if (Flag == false) {
+                    $("#TxtNameValidation").html("Invalid Input..!!");
+                }
+                return Flag;
+            });
+
+            $("#TxtEmailId").blur(function () {
+                $("#TxtEmailIdValidation").empty();
+                if ($(this).val() == "" || $(this).val() == null) {
+                    $("#TxtEmailIdValidation").html("(*) Email Id Required...!!");
+                }
+                else {
+                    if (!$(this).val().match($EmailIdRegEx)) {
+                        $("#TxtEmailIdValidation").html("(*) Invalid Email ID...!! ");
+                    }
+                }
+            });
+
+            $("#TxtContactMsg").blur(function () {
+                $("#TxtContactMsgValidation").empty();
+                if ($(this).val() == "" || $(this).val() == null) {
+                    $("#TxtContactMsgValidation").html("(*) Contact message required..!!");
+                }
+                else {
+                    if ($("#TxtContactMsg").val().length > 300) {
+                        $("#TxtContactMsgValidation").html("(*) Invalid contact message..!!");
+                    }
+                }
+            });
+
+            $("form").submit(function (e) {
+                e.preventDefault();
+                var TxtNameFlag = false, TxtEmailIdFlag = false, TxtContactMsgFlag = false;
+                $("#TxtNameValidation").empty();
+                if ($("#TxtName").val() == "" || $("#TxtName").val() == null) {
+                    $("#TxtNameValidation").html("(*) Name Required...");
+                    TxtNameFlag = false;
+                }
+                else {
+                    if (!$("#TxtName").val().match($FullNameRegEx)) {
+                        $("#TxtNameValidation").html("(*) Invalid Name...");
+                        TxtNameFlag = false;
+                    }
+                    else {
+                        TxtNameFlag = true;
+                    }
+                }
+
+                $("#TxtEmailIdValidation").empty();
+                if ($("#TxtEmailId").val() == "" || $("#TxtEmailId").val() == null) {
+                    $("#TxtEmailIdValidation").html("(*) Email id required..!!");
+                    TxtEmailIdFlag = false;
+                }
+                else {
+                    if (!$("#TxtEmailId").val().match($EmailIdRegEx)) {
+                        $("#TxtEmailIdValidation").html("(*) Invalid email id..!!");
+                        TxtEmailIdFlag = false;
+                    }
+                    else {
+                        TxtEmailIdFlag = true;
+                    }
+                }
+                $("#TxtContactMsgValidation").empty();
+                if ($("#TxtContactMsg").val() == "" || $("#TxtContactMsg").val() == null) {
+                    $("#TxtContactMsgValidation").html("(*) Contact message required..!!");
+                    TxtContactMsgFlag = false;
+                }
+                else {
+                    if ($("#TxtContactMsg").val().length > 300) {
+                        $("#TxtContactMsgValidation").html("(*) Invalid contact message..!!");
+                        TxtContactMsgFlag = false;
+                    }
+                    else {
+                        TxtContactMsgFlag = true;
+                    }
+                }
+
+                if (TxtNameFlag == true && TxtEmailIdFlag == true && TxtContactMsgFlag == true) {
+                    $("input,textarea").val("");
+                    alert("Form submitted successfully..!!");
+                }
+                else {
+                    alert("Invalid Input..!!");
+                }
+            });
+        });
+    </script>
+
+    <style>
+        body{
+            background-image: url(Img1.jpg);
+            background-size: cover;
+            background-position: center;
+            opacity:initial;
+        }
+        .main2 {
+            display: inline-block;
+            position: relative;
+            color: rgb(132, 132, 230);
+            font-size: 45px;
+            top: -118px;
+            left: 37%;
+        }
+
+        .main1 {
+            display: inline-block;
+            position: relative;
+            top: -8px;
+            width: 50%;
+            margin-left: 25%;
+            margin-right: 10%;
+        }
+
+        .field {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid lightgrey;
+            border-radius: 6px;
+            outline: none;
+            font-size: 17px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .textarea {
+            height: 100px;
+        }
+
+        .submit-btn {
+            color: #fff;
+            display: block;
+            width: 160px;
+            height: 45px;
+            margin-top: 20px;
+            outline: none;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            background: rgb(74, 99, 106);
+            border: 2px solid rgb(74, 99, 106);
+            transition: all 0.3s ease;
+        }
+
+        .main3 {
+            display: inline-block;
+            position: relative;
+            width: 50%;
+            margin-left: 23%;
+            margin-top: 10%;
+            border-radius: 5px;
+            box-shadow: 0px 0px 20px rgb(15, 137, 203);
+            padding: 20px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .main2 {
+                font-size: 25px;
+            }
+
+            .main1 {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .main2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main3">
+        <div class="main2">Feedback</div>
+        <div>
+            <div class="main1">
+                <form action="#">
+                    <div class="fields">
+                        <div class="field">
+                            <input type="text" id="TxtName" class="input" placeholder="Name">
+                            <small id="TxtNameValidation"></small>
+                        </div>
+                        <div class="field">
+                            <input type="email" id="TxtEmailId" class="input" placeholder="Email">
+                            <small id="TxtEmailIdValidation"></small>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <textarea class="textarea" id="TxtContactMsg" placeholder="Message"></textarea>
+                        <small id="TxtContactMsgValidation"></small>
+                    </div>
+                    <div class="button-area">
+                        <button type="submit" id="BtnSubmit" class="submit-btn">Send message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<small class="text-danger" id="LnameValidation"></small>
